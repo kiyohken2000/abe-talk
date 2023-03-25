@@ -45,7 +45,7 @@ const convertTitle = async({formatedTitle}) => {
 const getVoiceId = async({convertedTitle}) => {
   try {
     const response = await axios.post(
-      'https://api.uberduck.ai/speak',
+      '/speak',
       {
         'pace': 1,
         'voicemodel_uuid': uberduckProps.voiceModelUUID,

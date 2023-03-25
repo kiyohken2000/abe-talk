@@ -17,4 +17,6 @@ const uberduckProps = {
   voiceModelUUID: '1375622b-b3e2-47fe-aff2-e1f6eba53257',
 }
 
-export { baseUrl, endPoints, kenmouUrl, galleryBaseUrl, kenmouAPI, covertTacotronAPI, uberduckProps }
+const version = '0.1'
+
+export { baseUrl, endPoints, kenmouUrl, galleryBaseUrl, kenmouAPI, covertTacotronAPI, uberduckProps, version }

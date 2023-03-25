@@ -1,10 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
 import { colors, fontSize } from "@/theme";
+import { version } from "@/config";
 
 export default function Header() {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>kentyo.fm</Text>
+      <Text style={styles.label}>{`Abe Talk version ${version}`}</Text>
     </View>
   )
 }

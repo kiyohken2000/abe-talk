@@ -6,6 +6,7 @@ import { FaPlayCircle, FaDownload, FaStopCircle } from 'react-icons/fa'
 import axios from "axios";
 import Sound from 'react-sound';
 import { onSavePress } from "@/utils/functions";
+import { getVoiceId } from "@/utils/functions";
 
 export default function RenderIcons(props) {
   const { voiceSource, id } = props
@@ -15,7 +16,8 @@ export default function RenderIcons(props) {
   useEffect(() => {
     const getVoice = async() => {
       try {
-        const res = await axios.get(voiceSource)
+        const _voiceId = getVoiceId({url: voiceSource})
+        const res = await axios.get(`/speak-play/${_voiceId}`)
         if(res.status === 200) {
           setIsAvailable(true)
         } else {

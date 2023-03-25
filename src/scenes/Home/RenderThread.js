@@ -4,6 +4,7 @@ import { fontSize, colors } from "@/theme";
 import axios from "axios";
 import { generateVoice, saveVoiceToFirestore, checkVoiceExists } from "./functions";
 import RenderButtons from "./RenderButtons";
+import { getVoiceId } from "@/utils/functions";
 
 export default function RenderThread(props) {
   const { id, index, url, title, formatedTitle } = props.item
@@ -15,7 +16,8 @@ export default function RenderThread(props) {
     const getVoice = async() => {
       try {
         if(!voiceUrl) return
-        const res = await axios.get(voiceUrl)
+        const _voiceId = getVoiceId({url: voiceUrl})
+        const res = await axios.get(`/speak-play/${_voiceId}`)
         if(res.status === 200) {
           setIsVoiceExists(true)
         } else {
@@ -23,7 +25,6 @@ export default function RenderThread(props) {
         }
       } catch(e) {
         console.log('voice wav not found', e)
-        setIsAvailable(false)
       }
     }
     getVoice()

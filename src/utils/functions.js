@@ -55,7 +55,8 @@ const sleep = (ms) => {
 }
 
 const onSavePress = async({voiceSource, id}) => {
-  const res = await axios.get(voiceSource, {responseType:"blob"});
+  const _voiceId = getVoiceId({url: voiceSource})
+  const res = await axios.get(`/speak-play/${_voiceId}`, {responseType:"blob"});
   const blob = new Blob([res.data], {type:"audio/mpeg"});
   saveAs(blob, `${id}.wav`);
 }
@@ -64,4 +65,8 @@ const removeNumericCharacterReferences = ({str}) => {
   return str.replace(/&#[0-9]+;/g, '');
 }
 
-export { getNowTime, formatPhotos, formatThreads, sleep, onSavePress }
+const getVoiceId = ({url}) => {
+  return url.replace('https://uberduck-audio-outputs.s3-us-west-2.amazonaws.com/', '')
+}
+
+export { getNowTime, formatPhotos, formatThreads, sleep, onSavePress, getVoiceId }

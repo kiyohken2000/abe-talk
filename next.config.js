@@ -26,6 +26,10 @@ const nextConfig = {
         source: '/speak-status',
         destination: 'https://api.uberduck.ai/speak-status',
       },
+      {
+        source: '/speak-play/:path*',
+        destination: 'https://uberduck-audio-outputs.s3-us-west-2.amazonaws.com/:path*',
+      },
     ];
   },
 }

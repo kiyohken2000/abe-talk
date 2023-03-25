@@ -69,7 +69,7 @@ const getVoiceId = async({convertedTitle}) => {
 const getVoice = async({uuid}) => {
   try {
     const response = await axios.get(
-      'https://api.uberduck.ai/speak-status',
+      '/speak-status',
       {
         params: {
           'uuid': uuid

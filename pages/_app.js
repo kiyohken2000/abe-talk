@@ -1,10 +1,13 @@
 import * as React from "react";
 import { NavigationContextProvider } from "@/contexts/NavigationContext";
+import { PaceContextProvider } from "@/contexts/PaceContext";
 
 function MyApp({ Component, pageProps }) {
   return (
     <NavigationContextProvider>
-      <Component {...pageProps} />
+      <PaceContextProvider>
+        <Component {...pageProps} />
+      </PaceContextProvider>
     </NavigationContextProvider>
   );
 }

@@ -3,6 +3,7 @@ import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { Sidebar, BottomBar } from "./Sidebar";
 import Footer from "./Footer";
 import Header from "./Header";
+import PaceSlider from "./PaceSlider";
 
 export default function ScreenTemplate(props) {
   const { height, width } = useWindowDimensions()
@@ -26,6 +27,12 @@ export default function ScreenTemplate(props) {
         {!isDesktop?
           <View style={styles.bottomBarContainer}>
             <BottomBar/>
+          </View>
+          :null
+        }
+        {!isDesktop?
+          <View style={styles.sliderContainer}>
+            <PaceSlider />
           </View>
           :null
         }
@@ -60,5 +67,8 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 15
+  },
+  sliderContainer: {
+    paddingHorizontal: 10
   }
 })

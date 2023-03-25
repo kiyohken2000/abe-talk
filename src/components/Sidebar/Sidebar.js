@@ -4,6 +4,7 @@ import { colors } from "@/theme";
 import { items } from "./items";
 import { useRouter } from "next/router";
 import RenderSideButton from "./RenderSideButton";
+import PaceSlider from "../PaceSlider";
 
 export default function Sidebar() {
   const router = useRouter()
@@ -37,6 +38,9 @@ export default function Sidebar() {
             />
           )
         })}
+        <View style={styles.sliderContainer}>
+          <PaceSlider />
+        </View>
       </View>
     </View>
   )
@@ -61,5 +65,8 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  sliderContainer: {
+    paddingHorizontal: 20
   }
 })

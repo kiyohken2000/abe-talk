@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "@/theme";
 import { IconContext } from 'react-icons'
@@ -7,9 +7,11 @@ import axios from "axios";
 import Sound from 'react-sound';
 import { onSavePress } from "@/utils/functions";
 import { getVoiceId } from "@/utils/functions";
+import { PaceContext } from "@/contexts/PaceContext";
 
 export default function RenderIcons(props) {
   const { voiceSource, id } = props
+  const { pace } = useContext(PaceContext)
   const [isAvailable, setIsAvailable] = useState(false)
   const [SoundStatus, setSoundStatus] = useState('STOPPED');
 
@@ -68,6 +70,7 @@ export default function RenderIcons(props) {
         playStatus={SoundStatus}
         playFromPosition={0}
         onFinishedPlaying={() => setSoundStatus('STOPPED')}
+        playbackRate={pace}
       />
     </View>
   )

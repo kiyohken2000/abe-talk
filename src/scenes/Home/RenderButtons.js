@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "@/theme";
 import { IconContext } from 'react-icons'
 import { FaShareAlt, FaPlayCircle, FaDownload, FaStopCircle } from 'react-icons/fa'
 import { onSavePress } from "@/utils/functions";
 import Sound from 'react-sound';
+import { PaceContext } from "@/contexts/PaceContext";
 
 export default function RenderButtons(props) {
   const { onGeneratePress, voiceUrl, isVoiceExists, id } = props
+  const { pace } = useContext(PaceContext)
   const [SoundStatus, setSoundStatus] = useState('STOPPED');
 
   const handleSoundPlay = () => {
@@ -59,6 +61,7 @@ export default function RenderButtons(props) {
         playStatus={SoundStatus}
         playFromPosition={0}
         onFinishedPlaying={() => setSoundStatus('STOPPED')}
+        playbackRate={pace}
       />
     </View>
   )

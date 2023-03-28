@@ -23,7 +23,7 @@ export default function Sidebar() {
   return (
     <View style={styles.container}>
       <View
-        style={[styles.logoContainer, {height: height * 0.2}]}
+        style={[styles.logoContainer, {paddingVertical: height * 0.03}]}
         onLayout={onLayout}
       >
         <TouchableOpacity

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { View, StyleSheet, TouchableOpacity, useWindowDimensions, Text } from "react-native";
 import Image from "next/image";
 import { colors } from "@/theme";
@@ -9,14 +10,22 @@ import PaceSlider from "../PaceSlider";
 export default function Sidebar() {
   const router = useRouter()
   const { height, width } = useWindowDimensions()
+  const [logoWidth, setLogoWidth] = useState(100)
 
   const onLogoPress = () => {
     router.push('/')
   }
 
+  const onLayout = (e) => {
+    setLogoWidth(e.nativeEvent.layout.width)
+  }
+
   return (
     <View style={styles.container}>
-      <View style={styles.logoContainer}>
+      <View
+        style={styles.logoContainer}
+        onLayout={onLayout}
+      >
         <TouchableOpacity
           onPress={onLogoPress}
           style={styles.logoButton}
@@ -24,8 +33,8 @@ export default function Sidebar() {
           <Image
             src="/images/icon.png"
             alt="Sample image"
-            width={width * 0.1}
-            height={width * 0.1}
+            width={logoWidth * 0.6}
+            height={logoWidth * 0.6}
           />
         </TouchableOpacity>
       </View>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, useWindowDimensions, Text } from "react-native";
+import { View, StyleSheet, TouchableOpacity, useWindowDimensions } from "react-native";
 import Image from "next/image";
 import { colors } from "@/theme";
 import { items } from "./items";
@@ -23,7 +23,7 @@ export default function Sidebar() {
   return (
     <View style={styles.container}>
       <View
-        style={styles.logoContainer}
+        style={[styles.logoContainer, {height: height * 0.2}]}
         onLayout={onLayout}
       >
         <TouchableOpacity
@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
   logoContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   mainContainer: {
-    flex: 4,
+    flex: 3,
   },
   logoButton: {
     backgroundColor: colors.blueLight,
